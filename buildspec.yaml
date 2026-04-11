@@ -10,9 +10,9 @@ phases:
       - echo Starting build at `date`
       - echo Building the Docker image...          
       - docker build -t udacity-analytics-docker:test-coworking-analytics analytics/
-      - docker tag udacity-analytics-docker:test-coworking-analytics:$CODEBUILD_BUILD_NUMBER 302590777472.dkr.ecr.us-east-1.amazonaws.com/udacity-analytics-docker:test-coworking-analytics
+      - docker tag udacity-analytics-docker:test-coworking-analytics:$CODEBUILD_BUILD_NUMBER 302590777472.dkr.ecr.us-east-1.amazonaws.com/udacity-analytics-docker:test-coworking-analytics-$CODEBUILD_BUILD_NUMBER
   post_build:
     commands:
       - echo Completed build at `date`
       - echo Pushing the Docker image...
-      - docker push 302590777472.dkr.ecr.us-east-1.amazonaws.com/udacity-analytics-docker:test-coworking-analytics
+      - docker push 302590777472.dkr.ecr.us-east-1.amazonaws.com/udacity-analytics-docker:test-coworking-analytics-$CODEBUILD_BUILD_NUMBER
