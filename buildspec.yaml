@@ -12,8 +12,10 @@ phases:
       - echo Building the Docker image...
       - docker build -t udacity-analytics-docker:test-coworking-analytics analytics/
       - docker tag udacity-analytics-docker:test-coworking-analytics $REPOSITORY_URI:$CODEBUILD_BUILD_NUMBER
+      - docker tag udacity-analytics-docker:test-coworking-analytics $REPOSITORY_URI:test-coworking-analytics
   post_build:
     commands:
       - echo Completed build at `date`
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$CODEBUILD_BUILD_NUMBER
+      - docker push $REPOSITORY_URI:test-coworking-analytics
